@@ -240,7 +240,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "1.0"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -648,7 +648,7 @@
         "uuid": "85cf9c24-144f-4343-ae5b-81f014581756"
       }
     ],
-    "used_designators": "A1,#PWR1-5,DFPLAYER MINI1,J1,U1,SW1-3",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
