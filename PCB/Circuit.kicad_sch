@@ -2212,6 +2212,197 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Switch:SW_DPST_x2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_DPST_x2"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Single Pole Single Throw (SPST) switch, separate symbol"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "switch lever"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SW_DPST_x2_0_0"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 0.254) (xy 1.524 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_DPST_x2_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "SW_DPST_x2_2_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Switch:SW_Push"
 			(pin_numbers
 				(hide yes)
@@ -2658,7 +2849,7 @@
 		(uuid "539b22c9-118c-45bf-8296-e1738c898446")
 	)
 	(rectangle
-		(start 22.86 78.74)
+		(start 22.86 77.47)
 		(end 102.87 99.06)
 		(stroke
 			(width 0)
@@ -2670,9 +2861,9 @@
 		)
 		(uuid "bd89a182-07d0-4b1a-b7ff-d49bd3c11dd3")
 	)
-	(text "Right Button"
+	(text "Left Button"
 		(exclude_from_sim no)
-		(at 61.722 53.34 0)
+		(at 61.214 53.34 0)
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -2700,9 +2891,9 @@
 		)
 		(uuid "561595a9-1bf5-456e-a9f7-06d42d12f7e0")
 	)
-	(text "Left Button"
+	(text "Right Button"
 		(exclude_from_sim no)
-		(at 61.214 43.18 0)
+		(at 61.722 43.18 0)
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -2895,6 +3086,16 @@
 	)
 	(wire
 		(pts
+			(xy 62.23 81.28) (xy 80.01 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21733ceb-b235-48f6-8622-16515f570721")
+	)
+	(wire
+		(pts
 			(xy 44.45 85.09) (xy 44.45 86.36)
 		)
 		(stroke
@@ -3035,13 +3236,13 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 81.28) (xy 80.01 81.28)
+			(xy 34.29 81.28) (xy 52.07 81.28)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "bfac9f43-1ea4-4470-ac30-c2d2fbb03194")
+		(uuid "be355d97-8bab-4761-af31-ea1ea7bee2db")
 	)
 	(wire
 		(pts
@@ -3477,6 +3678,94 @@
 			(project "Circuit"
 				(path "/85cf9c24-144f-4343-ae5b-81f014581756"
 					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_DPST_x2")
+		(at 57.15 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "23e23b01-1a7c-48d7-b709-46956ac42e0f")
+		(property "Reference" "SW4"
+			(at 57.15 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_DPST_x2"
+			(at 57.15 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 57.15 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single Pole Single Throw (SPST) switch, separate symbol"
+			(at 57.15 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0436bae9-b2ad-49ea-957f-682fc231996d")
+		)
+		(pin "3"
+			(uuid "76127bdc-bb5a-4816-9fcb-4af31d55d7c5")
+		)
+		(pin "2"
+			(uuid "91cbf3ae-5ffd-4b7d-a241-08cfca365c62")
+		)
+		(pin "4"
+			(uuid "a73e30e1-579b-4dd6-8939-0ccb9067c3fa")
+		)
+		(instances
+			(project "Circuit"
+				(path "/85cf9c24-144f-4343-ae5b-81f014581756"
+					(reference "SW4")
 					(unit 1)
 				)
 			)
