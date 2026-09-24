@@ -11,6 +11,9 @@
 #define SCREEN_ADDRESS 0x3C // 0x3C for 128x64, change to 0x3D if needed
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+byte commandBytes[10] = {0x7E, 0xFF, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xEF};
+
+// Variables
 // Buttons
 const int menuPin = 7;
 const int rightPin = 5;
@@ -19,7 +22,7 @@ const int leftPin = 9;
 // DFPlayer
 int song = 1;
 int playlist = 1;
-int volume = 15;
+int volume = 25;
 
 // Menu
 int order = 1;
@@ -229,8 +232,8 @@ const unsigned char epd_bitmap_volume_menu [] PROGMEM = {
 };
 
 void setup() {
-
-  Serial.begin(9600);
+	// Change to 9600 (because my Nano was broken)
+  Serial.begin(38400);
 
   pinMode(menuPin, INPUT_PULLUP);
 	pinMode(rightPin, INPUT_PULLUP);
@@ -241,11 +244,17 @@ void setup() {
     Serial.println(F("SSD1306 allocation failed"));
     for(;;); // Don't proceed, loop forever
   }
-
   display.clearDisplay();
   playMenu();
   display.display();
 
+	// Little delay to make sure the SD Card is detected	
+	delay(1000);
+
+	// Chooses folder / song
+	sendDFPlayerCommand(0x0F, playlist, song); 
+	// Chooses volume
+	sendDFPlayerCommand(0x06, 0x00, volume);
 }
 
 void loop() {
@@ -291,11 +300,16 @@ void updateMenu() {
 void rightMenu() {
 	if (order == 1) {
 		song += 1;
+		sendDFPlayerCommand(0x0F, playlist, song); 
   } else if (order == 2) {
 		playlist += 1;
+		song = 1;
+		sendDFPlayerCommand(0x0F, playlist, song); 
+
   } else if (order == 3) {
     if (volume < 30) {
 			volume += 1;
+			sendDFPlayerCommand(0x06, 0x00, volume); 
 		};
   }
 	// Updates display
@@ -309,14 +323,18 @@ void leftMenu() {
 	if (order == 1) {
     if (song > 1) {
     	song -= 1;
+			sendDFPlayerCommand(0x0F, playlist, song); 
 		}
   } else if (order == 2) {
     if (playlist > 1) {
     	playlist -= 1;
+			song = 1;
+			sendDFPlayerCommand(0x0F, playlist, song); 
 		}
   } else if (order == 3) {
     if (volume > 0) {
 			volume -= 1;
+			sendDFPlayerCommand(0x06, 0x00, volume);
 		};
   }
 	// Updates display
@@ -380,4 +398,23 @@ void volumeMenu() {
 	}
   display.println(volume);
   display.display();
+}
+
+void sendDFPlayerCommand(byte command, byte parameter1, byte parameter2) {
+  commandBytes[3] = command;
+  commandBytes[5] = parameter1;
+  commandBytes[6] = parameter2;
+
+  // Calculate the 16-bit checksum required by the DFPlayer
+  unsigned int checksum = 0;
+  for (int i = 1; i < 7; i++) {
+    checksum += commandBytes[i];
+  }
+  checksum = -checksum;
+
+  commandBytes[7] = highByte(checksum);
+  commandBytes[8] = lowByte(checksum);
+
+  // Send the clean 10-byte packet directly to the hardware pins
+  Serial.write(commandBytes, 10);
 }
